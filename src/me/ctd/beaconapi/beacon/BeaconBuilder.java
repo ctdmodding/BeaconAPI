@@ -1,12 +1,12 @@
 package me.ctd.beaconapi.beacon;
 
-import me.ctd.gameframework.util.beacon.beam.BeaconBeam;
-import me.ctd.gameframework.util.beacon.beam.BeaconBeamColor;
-import me.ctd.gameframework.util.beacon.core.BeaconRaw;
-import me.ctd.gameframework.util.beacon.core.impl.BeaconBuilderType;
-import me.ctd.gameframework.util.beacon.core.impl.PacketBeacon;
-import me.ctd.gameframework.util.beacon.core.impl.WorldBeacon;
-import me.ctd.gameframework.util.beacon.pyramid.BeaconPyramid;
+import me.ctd.beaconapi.beacon.beam.BeaconBeam;
+import me.ctd.beaconapi.beacon.beam.BeaconBeamColor;
+import me.ctd.beaconapi.beacon.core.BeaconRaw;
+import me.ctd.beaconapi.beacon.core.impl.BeaconBuilderType;
+import me.ctd.beaconapi.beacon.core.impl.PacketBeacon;
+import me.ctd.beaconapi.beacon.core.impl.WorldBeacon;
+import me.ctd.beaconapi.beacon.pyramid.BeaconPyramid;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

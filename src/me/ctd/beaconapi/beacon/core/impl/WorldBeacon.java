@@ -1,6 +1,6 @@
 package me.ctd.beaconapi.beacon.core.impl;
 
-import me.ctd.gameframework.util.beacon.core.BeaconRaw;
+import me.ctd.beaconapi.beacon.core.BeaconRaw;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;

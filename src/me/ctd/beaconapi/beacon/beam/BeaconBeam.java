@@ -1,9 +1,9 @@
 package me.ctd.beaconapi.beacon.beam;
 
-import me.ctd.gameframework.GameFramework;
-import me.ctd.gameframework.util.ChatUtil;
-import me.ctd.gameframework.util.PacketUtil;
-import me.ctd.gameframework.util.beacon.core.impl.BeaconBuilderType;
+import me.ctd.beaconapi.beacon.BeaconAPI;
+import me.ctd.beaconapi.beacon.core.impl.BeaconBuilderType;
+import me.ctd.beaconapi.beacon.util.PacketUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -66,24 +66,25 @@ public class BeaconBeam {
             public void run() {
                 sendBlockChange(player, top, Material.AIR);
             }
-        }.runTaskLater(GameFramework.getInstance().getPlugin(), 20L * 6);
+        }.runTaskLater(BeaconAPI.getInstance().getPlugin(), 20L * 6);
         new BukkitRunnable() {
             @Override
             public void run() {
                 sendBlockChange(player, top, Material.EMERALD);
-                ChatUtil.broadcastMessage("Flashing Beacon");
             }
-        }.runTaskLater(GameFramework.getInstance().getPlugin(), 20L * 6 + 3);
+        }.runTaskLater(BeaconAPI.getInstance().getPlugin(), 20L * 6 + 3);
+    }
+
+    public void cycleBeamColors(Player player, long tickDelay, BeaconBeamColor... beamColors) {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(BeaconAPI.getInstance().getPlugin(), () -> {
+            updateBeamColor(player, true, beamColors[BeaconAPI.getInstance().getRandom().nextInt(beamColors.length)]);
+        }, 0L, tickDelay);
     }
 
     public void updateBeamColor(Player player, boolean clear, BeaconBeamColor... beamColors) {
         if (clear) {
             for (int i = 0; i < this.beamColors.size(); i++) {
-                if (builderType == BeaconBuilderType.PACKET_BUILDER) {
-                    PacketUtil.sendBlockChange(player, location.clone().add(0, i + 1, 0), Material.AIR);
-                } else if (builderType == BeaconBuilderType.WORLD_BUILDER) {
-                    location.clone().add(0, i + 1, 0).getBlock().setType(Material.AIR);
-                }
+                sendBlockChange(player, location.clone().add(0, i + 1, 0), Material.AIR);
             }
             this.beamColors.clear();
         }

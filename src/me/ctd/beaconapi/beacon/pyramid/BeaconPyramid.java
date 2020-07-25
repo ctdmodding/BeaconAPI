@@ -1,7 +1,7 @@
 package me.ctd.beaconapi.beacon.pyramid;
 
-import me.ctd.gameframework.util.PacketUtil;
-import me.ctd.gameframework.util.beacon.core.impl.BeaconBuilderType;
+import me.ctd.beaconapi.beacon.core.impl.BeaconBuilderType;
+import me.ctd.beaconapi.beacon.util.PacketUtil;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

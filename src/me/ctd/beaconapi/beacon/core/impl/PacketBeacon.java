@@ -1,7 +1,7 @@
 package me.ctd.beaconapi.beacon.core.impl;
 
-import me.ctd.gameframework.util.PacketUtil;
-import me.ctd.gameframework.util.beacon.core.BeaconRaw;
+import me.ctd.beaconapi.beacon.core.BeaconRaw;
+import me.ctd.beaconapi.beacon.util.PacketUtil;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -24,6 +24,7 @@ public class PacketBeacon extends BeaconRaw<Player> {
 
     @Override
     public void build(Player player) {
+        cacheBlockChange(getLocation());
         PacketUtil.sendBlockChange(player, getLocation(), Material.BEACON);
         getPyramid().build(player, getBuilderType());
         getBeaconBeam().build(player);
